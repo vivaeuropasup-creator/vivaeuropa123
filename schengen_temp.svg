@@ -1,0 +1,64 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2a2a2a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#d4af37;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f4d03f;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#003399;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0066cc;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bg)"/>
+  
+  <!-- EU flag elements -->
+  <rect x="50" y="50" width="700" height="50" fill="url(#blue)"/>
+  <circle cx="120" cy="65" r="3" fill="#f4d03f"/>
+  <circle cx="135" cy="70" r="3" fill="#f4d03f"/>
+  <circle cx="145" cy="85" r="3" fill="#f4d03f"/>
+  <circle cx="145" cy="100" r="3" fill="#f4d03f"/>
+  <circle cx="135" cy="115" r="3" fill="#f4d03f"/>
+  <circle cx="120" cy="120" r="3" fill="#f4d03f"/>
+  <circle cx="105" cy="115" r="3" fill="#f4d03f"/>
+  <circle cx="95" cy="100" r="3" fill="#f4d03f"/>
+  <circle cx="95" cy="85" r="3" fill="#f4d03f"/>
+  <circle cx="105" cy="70" r="3" fill="#f4d03f"/>
+  <circle cx="120" cy="92" r="3" fill="#f4d03f"/>
+  <circle cx="120" cy="78" r="3" fill="#f4d03f"/>
+  
+  <!-- Passport -->
+  <rect x="200" y="180" width="180" height="250" rx="10" fill="#8b0000" stroke="url(#accent)" stroke-width="2"/>
+  <rect x="220" y="200" width="140" height="20" fill="url(#accent)"/>
+  <text x="290" y="215" text-anchor="middle" fill="#000" font-family="Arial, sans-serif" font-size="12" font-weight="bold">PASSPORT</text>
+  <rect x="220" y="240" width="60" height="80" fill="#333"/>
+  <rect x="300" y="250" width="60" height="6" fill="#ccc"/>
+  <rect x="300" y="270" width="70" height="6" fill="#ccc"/>
+  <rect x="300" y="290" width="50" height="6" fill="#ccc"/>
+  
+  <!-- Visa stamp -->
+  <rect x="220" y="340" width="140" height="70" fill="#333" stroke="url(#accent)" stroke-width="2"/>
+  <text x="290" y="360" text-anchor="middle" fill="url(#accent)" font-family="Arial, sans-serif" font-size="10" font-weight="bold">SCHENGEN</text>
+  <text x="290" y="375" text-anchor="middle" fill="url(#accent)" font-family="Arial, sans-serif" font-size="8">VISA</text>
+  <text x="290" y="390" text-anchor="middle" fill="#ccc" font-family="Arial, sans-serif" font-size="8">90 DAYS</text>
+  
+  <!-- Map outline (simplified Europe) -->
+  <path d="M450 200 L500 180 L550 190 L580 210 L570 250 L550 280 L520 290 L480 280 L450 260 Z" fill="#444" stroke="url(#accent)" stroke-width="2"/>
+  <circle cx="500" cy="230" r="3" fill="url(#accent)"/>
+  <circle cx="520" cy="240" r="3" fill="url(#accent)"/>
+  <circle cx="480" cy="250" r="3" fill="url(#accent)"/>
+  
+  <!-- Airplane -->
+  <path d="M600 350 L650 340 L670 345 L675 350 L670 355 L650 360 L620 370 L610 365 Z" fill="url(#accent)"/>
+  <path d="M630 345 L640 335 L645 340 L635 350 Z" fill="url(#accent)"/>
+  <path d="M630 355 L640 365 L645 360 L635 350 Z" fill="url(#accent)"/>
+  
+  <!-- Title -->
+  <text x="400" y="150" text-anchor="middle" fill="url(#accent)" font-family="Arial, sans-serif" font-size="32" font-weight="bold">SCHENGEN</text>
+  <text x="400" y="180" text-anchor="middle" fill="#ccc" font-family="Arial, sans-serif" font-size="18">Visa Services</text>
+</svg>
