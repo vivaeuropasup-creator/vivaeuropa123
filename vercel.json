@@ -4,7 +4,39 @@
   "rewrites": [
     { "source": "/", "destination": "/index_ru.html" },
     { "source": "/en", "destination": "/index_en.html" },
-    { "source": "/ru", "destination": "/index_ru.html" }
+    { "source": "/ru", "destination": "/index_ru.html" },
+    
+    // Russian pages
+    { "source": "/o-nas", "destination": "/about_ru.html" },
+    { "source": "/uslugi", "destination": "/services_ru.html" },
+    { "source": "/protsess", "destination": "/process_ru.html" },
+    { "source": "/goroda", "destination": "/cities_ru.html" },
+    { "source": "/kontakty", "destination": "/contact_ru.html" },
+    { "source": "/faq", "destination": "/faq_ru.html" },
+    { "source": "/vnzh-ispanii", "destination": "/service_residence_ru.html" },
+    { "source": "/shengenskaya-viza", "destination": "/service_schengen_ru.html" },
+    { "source": "/madrid", "destination": "/city_madrid_ru.html" },
+    { "source": "/barcelona", "destination": "/city_barcelona_ru.html" },
+    { "source": "/valencia", "destination": "/city_valencia_ru.html" },
+    { "source": "/privacy", "destination": "/privacy_ru.html" },
+    { "source": "/terms", "destination": "/terms_ru.html" },
+    { "source": "/cookies", "destination": "/cookies_ru.html" },
+    
+    // English pages
+    { "source": "/about", "destination": "/about_en.html" },
+    { "source": "/services", "destination": "/services_en.html" },
+    { "source": "/process", "destination": "/process_en.html" },
+    { "source": "/cities", "destination": "/cities_en.html" },
+    { "source": "/contact", "destination": "/contact_en.html" },
+    { "source": "/faq-en", "destination": "/faq_en.html" },
+    { "source": "/residence-permit", "destination": "/service_residence_en.html" },
+    { "source": "/schengen-visa", "destination": "/service_schengen_en.html" },
+    { "source": "/madrid-en", "destination": "/city_madrid_en.html" },
+    { "source": "/barcelona-en", "destination": "/city_barcelona_en.html" },
+    { "source": "/valencia-en", "destination": "/city_valencia_en.html" },
+    { "source": "/privacy-en", "destination": "/privacy_en.html" },
+    { "source": "/terms-en", "destination": "/terms_en.html" },
+    { "source": "/cookies-en", "destination": "/cookies_en.html" }
   ],
   "headers": [
     {
