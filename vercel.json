@@ -5,8 +5,6 @@
     { "source": "/", "destination": "/index_ru.html" },
     { "source": "/en", "destination": "/index_en.html" },
     { "source": "/ru", "destination": "/index_ru.html" },
-    
-    // Russian pages
     { "source": "/o-nas", "destination": "/about_ru.html" },
     { "source": "/uslugi", "destination": "/services_ru.html" },
     { "source": "/protsess", "destination": "/process_ru.html" },
@@ -21,8 +19,6 @@
     { "source": "/privacy", "destination": "/privacy_ru.html" },
     { "source": "/terms", "destination": "/terms_ru.html" },
     { "source": "/cookies", "destination": "/cookies_ru.html" },
-    
-    // English pages
     { "source": "/about", "destination": "/about_en.html" },
     { "source": "/services", "destination": "/services_en.html" },
     { "source": "/process", "destination": "/process_en.html" },
