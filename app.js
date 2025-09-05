@@ -1,6 +1,6 @@
 // VivaEuropa - CTA & Lead Management
 // Конфигурация с актуальными данными
-const WA_URL = "https://wa.me/79291735720?text=Здравствуйте,%20хочу%20получить%20ВНЖ%20в%20Испании";
+const WA_URL = "https://wa.me/79039910369?text=Здравствуйте,%20хочу%20получить%20ВНЖ%20в%20Испании";
 const TG_URL = "https://t.me/vivaeu";
 const MAILTO_URL = "mailto:vivaeuropa.sup@gmail.com?subject=Запрос%20по%20ВНЖ%20Испании&body=Имя:%0AСпособ%20связи:%0AГород/страна:%0AКратко%20суть:%0A";
 const GOOGLE_SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/.../exec?key=SECRET';
@@ -263,3 +263,68 @@ window.VivaEuropa = {
     TG_URL,
     MAILTO_URL
 };
+
+// Функция копирования email в буфер обмена
+function copyEmail(email) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(() => {
+            // Показываем уведомление об успешном копировании
+            showCopyNotification('Email скопирован!', 'success');
+        }).catch(err => {
+            // Fallback для старых браузеров
+            const textArea = document.createElement('textarea');
+            textArea.value = email;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            showCopyNotification('Email скопирован!', 'success');
+        });
+    } else {
+        // Fallback для очень старых браузеров
+        const textArea = document.createElement('textarea');
+        textArea.value = email;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        showCopyNotification('Email скопирован!', 'success');
+    }
+}
+
+// Функция показа уведомления о копировании
+function showCopyNotification(message, type = 'success') {
+    // Создаем уведомление
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${type === 'success' ? '#4CAF50' : '#f44336'};
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        z-index: 10000;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    `;
+    notification.textContent = message;
+    
+    document.body.appendChild(notification);
+    
+    // Показываем уведомление
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Скрываем через 3 секунды
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300);
+    }, 3000);
+}

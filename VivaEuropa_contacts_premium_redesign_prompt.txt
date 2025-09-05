@@ -1,0 +1,244 @@
+# PROMPT ДЛЯ CURSOR — «Премиум»-редизайн блока контактов
+
+Ты фронтенд-разработчик. Проект: статические HTML, общий CSS. Задача: превратить блок «Способы связи» в чистый, минималистичный и дорогой UI. Без неоновых свечений, без двойных рамок, с идеальной типографикой и выравниваниями.
+
+## Где правим
+- Страницы: `VivaEuropa/contact_ru.html` и (если есть) `contact_en.html`.
+- Общий CSS (тот же, где стили карточек/сеток). **Новые правила добавляй в самый конец**. Ничего не вырезай «топором» — переопредели аккуратно.
+
+---
+
+## 1) HTML: заменить внутренности секции контактов на лаконичную структуру
+
+Найди секцию с заголовком «Способы связи» и **замени содержимое внутри этой секции** на следующее (сохрани существующий `<h1>` если он там уже есть):
+
+```html
+<section class="contacts-section">
+  <h1 class="section-title">Способы связи</h1>
+
+  <ul class="contact-list" role="list">
+    <!-- WhatsApp -->
+    <li class="contact-item">
+      <div class="ci-left">
+        <span class="ci-ico" aria-hidden="true">
+          <!-- WA icon -->
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M20 3.9A10 10 0 0 0 3.3 17.4L2 22l4.7-1.2A10 10 0 1 0 20 3.9Zm-7.9 15.8a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-2.5.6.7-2.4-.2-.3a8.2 8.2 0 1 1 6.5 3.5Z"/>
+          </svg>
+        </span>
+        <div class="ci-text">
+          <div class="ci-title">WhatsApp</div>
+          <!-- подставь фактический номер -->
+          <a class="ci-value" href="https://wa.me/79926692787">+7 992 669-27-87</a>
+        </div>
+      </div>
+      <div class="ci-right">
+        <a class="ci-action ci-wa" href="https://wa.me/79926692787" target="_blank" rel="noopener">Написать</a>
+      </div>
+    </li>
+
+    <!-- Telegram -->
+    <li class="contact-item">
+      <div class="ci-left">
+        <span class="ci-ico" aria-hidden="true">
+          <!-- TG icon -->
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M21 6 3 13l5 1.6L9 20l3-3 6 4z"/>
+          </svg>
+        </span>
+        <div class="ci-text">
+          <div class="ci-title">Telegram</div>
+          <!-- подставь фактический @handle -->
+          <a class="ci-value" href="https://t.me/vivaeurop">@vivaeurop</a>
+        </div>
+      </div>
+      <div class="ci-right">
+        <a class="ci-action ci-tg" href="https://t.me/vivaeurop" target="_blank" rel="noopener">Написать</a>
+      </div>
+    </li>
+
+    <!-- Instagram -->
+    <li class="contact-item">
+      <div class="ci-left">
+        <span class="ci-ico" aria-hidden="true">
+          <!-- IG icon -->
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Z"/>
+          </svg>
+        </span>
+        <div class="ci-text">
+          <div class="ci-title">Instagram</div>
+          <a class="ci-value" href="https://www.instagram.com/vivaeuropa_life?igsh=MWtsYWMzNnIzcmNoNw==" target="_blank" rel="noopener">@vivaeuropa_life</a>
+        </div>
+      </div>
+      <div class="ci-right">
+        <a class="ci-action ci-ig" href="https://www.instagram.com/vivaeuropa_life?igsh=MWtsYWMzNnIzcmNoNw==" target="_blank" rel="noopener" aria-label="Открыть Instagram VivaEuropa">Открыть</a>
+      </div>
+    </li>
+
+    <!-- Email -->
+    <li class="contact-item">
+      <div class="ci-left">
+        <span class="ci-ico" aria-hidden="true">
+          <!-- Mail icon -->
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M20 4H4v16h16V4Zm0 4-8 5-8-5"/>
+          </svg>
+        </span>
+        <div class="ci-text">
+          <div class="ci-title">Email</div>
+          <a class="ci-value" href="mailto:vivaeuropa.sup@gmail.com">vivaeuropa.sup@gmail.com</a>
+        </div>
+      </div>
+      <div class="ci-right">
+        <a class="ci-action ci-mail" href="mailto:vivaeuropa.sup@gmail.com">Написать</a>
+      </div>
+    </li>
+  </ul>
+
+  <p class="contacts-note">Отвечаем в день обращения (Мск/Европа). Встречи в Санкт-Петербурге — по записи.</p>
+</section>
+```
+
+Примечания:
+- Никаких вторичных «описаний» под карточками. Только заголовок, значение, лаконичная кнопка.
+- Действия короткие: «Написать», «Открыть».
+
+---
+
+## 2) CSS: добавить в конец общего стиля
+
+```css
+/* ===== VivaEuropa — Premium Contacts ===== */
+:root{
+  --ve-gold: #BFA158;
+  --ve-gold-weak: rgba(191,161,88,.12);
+  --ve-bg-card: #111213;
+  --ve-stroke: #232323;
+  --ve-stroke-strong: #2B2B2B;
+  --ve-shadow: 0 6px 22px rgba(0,0,0,.28);
+  --ve-radius: 16px;
+  --ve-radius-sm: 12px;
+}
+
+/* Список как ровная сетка */
+.contact-list{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 24px;
+  margin: 16px 0 8px;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 1200px){
+  .contact-list{ grid-template-columns: repeat(4, minmax(0,1fr)); }
+}
+@media (max-width: 991.98px){
+  .contact-list{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 575.98px){
+  .contact-list{ grid-template-columns: 1fr; }
+}
+
+/* Карточка-строка: строгая обводка, мягкая тень, аккуратные углы */
+.contact-item{
+  display:flex; align-items:center; justify-content:space-between;
+  gap: 14px;
+  padding: 18px 16px;
+  background: var(--ve-bg-card);
+  border: 1px solid var(--ve-stroke);
+  border-radius: var(--ve-radius);
+  box-shadow: var(--ve-shadow);
+  transition: border-color .2s ease, transform .2s ease, box-shadow .25s ease;
+}
+.contact-item:hover{
+  border-color: var(--ve-stroke-strong);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 28px rgba(0,0,0,.32);
+}
+
+/* Левая часть: иконка + текст */
+.ci-left{ display:flex; align-items:center; gap: 12px; min-width:0; }
+.ci-ico{
+  width: 36px; height: 36px; border-radius: 999px;
+  background: var(--ve-gold-weak); color: var(--ve-gold);
+  display:inline-flex; align-items:center; justify-content:center;
+  flex: 0 0 36px;
+}
+.ci-text{ min-width:0; }
+.ci-title{
+  font-size: 16px; line-height:1.2; color: #E9E9E9;
+  margin: 0 0 2px;
+}
+.ci-value{
+  font-size: 15px; line-height:1.35; color: #CFCFCF; text-decoration:none;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.ci-value:hover{ color:#FFFFFF; text-decoration: underline; }
+
+/* Правая часть: лаконичная кнопка-линк с тонкой рамкой */
+.ci-right{ flex: 0 0 auto; }
+.ci-action{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding: 9px 14px;
+  border-radius: var(--ve-radius-sm);
+  font-size: 14.5px;
+  color: #EDE4CD; background: transparent;
+  border: 1.5px solid rgba(191,161,88,.55);
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
+  text-decoration: none;
+}
+.ci-action:hover{
+  background: rgba(191,161,88,.10);
+  border-color: rgba(191,161,88,.80);
+  transform: translateY(-0.5px);
+}
+
+/* Едва заметные акцентные различия по каналам (без ядовитых цветов) */
+.ci-wa{ border-color: rgba(37,211,102,.45); }
+.ci-wa:hover{ background: rgba(37,211,102,.10); border-color: rgba(37,211,102,.75); }
+
+.ci-tg{ border-color: rgba(0,136,204,.45); }
+.ci-tg:hover{ background: rgba(0,136,204,.10); border-color: rgba(0,136,204,.75); }
+
+.ci-ig{ border-color: rgba(228,64,95,.50); }
+.ci-ig:hover{ background: rgba(228,64,95,.10); border-color: rgba(228,64,95,.80); }
+
+.ci-mail{ border-color: rgba(191,161,88,.55); } /* брендовое золото */
+.ci-mail:hover{ background: rgba(191,161,88,.10); border-color: rgba(191,161,88,.85); }
+
+/* Подпись-заметка */
+.contacts-note{
+  margin: 18px 0 0;
+  font-size: 14.5px; line-height:1.5; color:#8C8F98;
+}
+
+/* Заголовок секции — ровный ритм */
+.contacts-section .section-title{
+  margin: 0 0 18px;
+  line-height: 1.1;
+}
+```
+
+Почему так красиво:
+- Убрали «плитки» с жирными бордерами. Теперь это строгие строки-карточки с лёгкой тенью.
+- Типографика уменьшена и выровнена, чтобы не шуметь.
+- Кнопки — аккуратные «ghost»-линки с тонкой рамкой и мягким hover.
+- Иконки сидят в маленьких золотых кружках, а не в вырвиглазных контейнерах.
+
+---
+
+## 3) Доступность
+- Все actionable ссылки имеют `rel="noopener"`, у Instagram добавить `aria-label="Открыть Instagram VivaEuropa"`.
+- SVG иконки `aria-hidden="true"`.
+- На мобиле каждая строка тянется на всю ширину, кнопка не уезжает.
+
+---
+
+## 4) Acceptance criteria
+1. В десктопе 4 элемента в строку ≥1200px, 3 элемента по умолчанию, 2 на планшете, 1 на мобиле.
+2. Никаких вторичных текстов под карточками. Только заголовок, значение и короткая кнопка.
+3. Радиусы ~16/12 px, без неоновых инсет-свечений, тени деликатные.
+4. Цвета не вырываются из общей палитры, золотой акцент единый.
+5. Ритм: между заголовком и значением 2 px, справа кнопка на одной линии по вертикали.
+6. Вне секции «Способы связи» ничего не меняем.

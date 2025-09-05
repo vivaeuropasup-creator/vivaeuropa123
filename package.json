@@ -1,0 +1,28 @@
+{
+  "name": "vivaeuropa-website",
+  "version": "1.0.0",
+  "description": "VivaEuropa - Residence Permit Services in Spain",
+  "main": "index_ru.html",
+  "scripts": {
+    "build": "echo 'No build process required for static site'",
+    "start": "echo 'Static site - open index_ru.html in browser'",
+    "dev": "echo 'Static site - open index_ru.html in browser'"
+  },
+  "keywords": [
+    "spain",
+    "residence-permit",
+    "visa",
+    "immigration",
+    "schengen"
+  ],
+  "author": "VivaEuropa",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vivaeuropasup-creator/vivaeuropalife.git"
+  },
+  "homepage": "https://vivaeuropalife.vercel.app",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

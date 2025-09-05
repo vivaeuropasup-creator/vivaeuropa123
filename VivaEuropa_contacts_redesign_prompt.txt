@@ -1,0 +1,178 @@
+# PROMPT ДЛЯ CURSOR — редизайн блока «Способы связи» + добавление Instagram
+
+Ты фронтенд‑разработчик. Проект: статические HTML, общий CSS. Пересобери контактные карточки на **странице `contact_ru.html` (и `contact_en.html`, если есть)**. Сделай 4 равные карточки в едином стиле: WhatsApp, Telegram, **Instagram**, Email. Удали старые «описательные» подписи под Telegram/Email.
+
+---
+
+## 1) Структура HTML (заменить существующую разметку секции)
+Найди секцию «Способы связи» и **замени внутренности секции** на:
+
+```html
+<section class="contacts-section">
+  <h1 class="section-title">Способы связи</h1>
+
+  <div class="contact-grid">
+    <!-- WhatsApp -->
+    <article class="contact-card contact-wa">
+      <div class="contact-head">
+        <span class="contact-ico" aria-hidden="true">
+          <!-- WA SVG (укорочено) -->
+          <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M20 3.9A10 10 0 0 0 3.3 17.4L2 22l4.7-1.2A10 10 0 1 0 20 3.9Z"/></svg>
+        </span>
+        <h3 class="contact-title">WhatsApp</h3>
+      </div>
+      <div class="contact-main">
+        <!-- ИСПОЛЬЗУЙ ФАКТИЧЕСКИЙ НОМЕР ИЗ ПРОЕКТА -->
+        <a class="contact-value" href="https://wa.me/79926692787">+7 992 669‑27‑87</a>
+      </div>
+      <div class="contact-actions">
+        <a class="btn btn-contact btn-wa" href="https://wa.me/79926692787" target="_blank" rel="noopener">Написать в WhatsApp</a>
+      </div>
+    </article>
+
+    <!-- Telegram -->
+    <article class="contact-card contact-tg">
+      <div class="contact-head">
+        <span class="contact-ico" aria-hidden="true">
+          <!-- TG SVG (укорочено) -->
+          <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M21 6 3 13l5 1.6L9 20l3-3 6 4z"/></svg>
+        </span>
+        <h3 class="contact-title">Telegram</h3>
+      </div>
+      <div class="contact-main">
+        <!-- ИСПОЛЬЗУЙ ФАКТИЧЕСКИЙ @HANDLE ИЗ ПРОЕКТА -->
+        <a class="contact-value" href="https://t.me/vivaeurop">@vivaeurop</a>
+      </div>
+      <div class="contact-actions">
+        <a class="btn btn-contact btn-tg" href="https://t.me/vivaeurop" target="_blank" rel="noopener">Написать в Telegram</a>
+      </div>
+    </article>
+
+    <!-- Instagram -->
+    <article class="contact-card contact-ig">
+      <div class="contact-head">
+        <span class="contact-ico" aria-hidden="true">
+          <!-- IG SVG -->
+          <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10Z"/></svg>
+        </span>
+        <h3 class="contact-title">Instagram</h3>
+      </div>
+      <div class="contact-main">
+        <a class="contact-value" href="https://www.instagram.com/vivaeuropa_life?igsh=MWtsYWMzNnIzcmNoNw==" target="_blank" rel="noopener">@vivaeuropa_life</a>
+      </div>
+      <div class="contact-actions">
+        <a class="btn btn-contact btn-ig" href="https://www.instagram.com/vivaeuropa_life?igsh=MWtsYWMzNnIzcmNoNw==" target="_blank" rel="noopener" aria-label="Открыть Instagram VivaEuropa">Открыть Instagram</a>
+      </div>
+    </article>
+
+    <!-- Email -->
+    <article class="contact-card contact-mail">
+      <div class="contact-head">
+        <span class="contact-ico" aria-hidden="true">
+          <!-- Mail SVG (укорочено) -->
+          <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M20 4H4v16h16V4Zm0 4-8 5-8-5"/></svg>
+        </span>
+        <h3 class="contact-title">Email</h3>
+      </div>
+      <div class="contact-main">
+        <!-- ИСПОЛЬЗУЙ ФАКТИЧЕСКИЙ EMAIL ИЗ ПРОЕКТА -->
+        <a class="contact-value" href="mailto:vivaeuropa.sup@gmail.com">vivaeuropa.sup@gmail.com</a>
+      </div>
+      <div class="contact-actions">
+        <a class="btn btn-contact btn-mail" href="mailto:vivaeuropa.sup@gmail.com">Написать на Email</a>
+      </div>
+    </article>
+  </div>
+
+  <p class="note">Отвечаем в день обращения (Мск/Европа). Встречи в Санкт-Петербурге — по записи.</p>
+</section>
+```
+
+Правила:
+- **Удалить** старые подписи под Telegram/Email («безопасная передача…» и т. п.).
+- Порядок карточек: **WhatsApp → Telegram → Instagram → Email**.
+- Ссылки `href` для WA/TG/Email взять из текущего проекта (примеры выше — ориентир).
+
+---
+
+## 2) Стили (добавить в общий CSS проекта)
+
+```css
+/* Сетка */
+.contact-grid{
+  display:grid;
+  gap:24px;
+  grid-template-columns:repeat(3,1fr);
+}
+@media (min-width:1200px){ .contact-grid{ grid-template-columns:repeat(4,1fr); } }
+@media (max-width:991.98px){ .contact-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:575.98px){ .contact-grid{ grid-template-columns:1fr; } }
+
+/* Карточки */
+.contact-card{
+  background:#141414;
+  border:1px solid #2A2A2A;
+  border-radius:20px;
+  padding:20px 18px;
+  display:flex; flex-direction:column;
+  min-height:200px;
+  box-shadow:0 2px 14px rgba(0,0,0,.25);
+  transition:border-color .2s ease, box-shadow .25s ease, transform .2s ease;
+}
+.contact-card:hover{ border-color:#3A3A3A; box-shadow:0 8px 28px rgba(0,0,0,.35); transform:translateY(-1px); }
+
+.contact-head{ display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.contact-ico{
+  width:34px; height:34px;
+  border-radius:999px;
+  display:inline-flex; align-items:center; justify-content:center;
+  background:rgba(191,161,88,.12); color:#BFA158;
+}
+.contact-title{ font-size:18px; margin:0; }
+
+.contact-main{ margin-top:6px; }
+.contact-value{ font-size:16px; color:#E6E6E6; text-decoration:none; }
+.contact-value:hover{ text-decoration:underline; }
+
+/* Кнопки */
+.btn-contact{ 
+  margin-top:auto; 
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:10px 14px; border-radius:12px;
+  border:2px solid rgba(191,161,88,.65); 
+  color:#EDE4CD; background:transparent; 
+  transition: background-color .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.btn-contact:hover{ background:rgba(191,161,88,.10); box-shadow:0 0 0 4px rgba(191,161,88,.10) inset; }
+.btn-wa{ border-color: rgba(37,211,102,.7); } .btn-wa:hover{ background: rgba(37,211,102,.10); box-shadow:0 0 0 4px rgba(37,211,102,.08) inset; }
+.btn-tg{ border-color: rgba(0,136,204,.7); } .btn-tg:hover{ background: rgba(0,136,204,.10); box-shadow:0 0 0 4px rgba(0,136,204,.08) inset; }
+.btn-ig{ border-color: rgba(228,64,95,.75); } .btn-ig:hover{ background: rgba(228,64,95,.10); box-shadow:0 0 0 4px rgba(228,64,95,.08) inset; }
+.btn-mail{ border-color: rgba(191,161,88,.8); } .btn-mail:hover{ background: rgba(191,161,88,.10); box-shadow:0 0 0 4px rgba(191,161,88,.08) inset; }
+
+/* Заметка */
+.note{ margin-top:16px; font-size:14.5px; color:#8C8F98; }
+```
+
+---
+
+## 3) Доступность
+- Для всех ссылок/кнопок: `rel="noopener"`. Для Instagram также `aria-label="Открыть Instagram VivaEuropa"`.
+- Иконки `svg` оставить с `aria-hidden="true"`.
+- Все четыре карточки одной высоты за счёт `margin-top:auto` у `.btn-contact`.
+
+---
+
+## 4) Что удалить из старой секции
+- Серые подписи под Telegram/Email («безопасная передача…», «для официальной переписки…»).
+- Конфликтующие неоновые тени/рамки, если такие были.
+
+---
+
+## 5) Acceptance criteria
+1. На `contact_ru.html` четыре карточки в ряд (≥1200px), на планшете две, на мобиле одна.  
+2. Порядок: WhatsApp → Telegram → Instagram → Email.  
+3. Старые подписи удалены; в карточке только заголовок, значение и кнопка.  
+4. Instagram работает по ссылке `https://www.instagram.com/vivaeuropa_life?igsh=MWtsYWMzNnIzcmNoNw==`, кнопка стилистически идентична остальным.  
+5. Визуальный стиль ровный: одинаковые радиусы, шрифты, расстояния, деликатные ховеры.  
+6. Контраст и доступность ок, Lighthouse/axe без ошибок.  
+7. Вне секции «Способы связи» ничего не меняли.

@@ -1,0 +1,102 @@
+# PROMPT ДЛЯ CURSOR — полировка контактов: радиусы 16px, мягкие ховеры, ровный ритм заголовков
+
+Ты фронтенд‑разработчик. Проект: статические HTML, общий CSS. Нужно аккуратно «дополировать» блок контактов, чтобы выглядел премиально: меньше округлений, без дешёвого внутреннего свечения, ровные отступы. Делай правки **идемпотентно**: если правило уже есть — переопредели его ниже, ничего не удаляй «в лоб».
+
+## 1) Целевые файлы
+- Страница: `VivaEuropa/contact_ru.html` (и `contact_en.html`, если есть).
+- Глобальный CSS, общий для страницы контактов (тот же файл, где ранее добавлялись стили `.contact-grid`/`.contact-card`/`.btn-contact`). Все новые правила добавляй **в самый конец** этого CSS.
+
+## 2) CSS‑правки (вставить блоком в конец общего CSS)
+
+```css
+/* ===== VivaEuropa — polish for Contacts section ===== */
+
+/* Базовые переменные под аккуратный вид */
+:root{
+  --ve-radius-card: 16px;            /* было 20px */
+  --ve-radius-btn: 12px;             /* оставить мягко, но без "подушки" */
+  --ve-shadow-card: 0 2px 12px rgba(0,0,0,.20);
+  --ve-shadow-card-hover: 0 8px 24px rgba(0,0,0,.30);
+  --ve-ico-bg: rgba(191,161,88,.10); /* чуть слабее фон у иконок */
+}
+
+/* Карточки — меньше скругление, спокойные тени */
+.contact-card{
+  border-radius: var(--ve-radius-card) !important;
+  box-shadow: var(--ve-shadow-card) !important;
+  border: 1px solid #2A2A2A;         /* без грубых подсветок */
+}
+.contact-card:hover{
+  border-color:#3A3A3A;
+  box-shadow: var(--ve-shadow-card-hover) !important;
+  transform: translateY(-1px);
+}
+
+/* Заголовок и иконка — аккуратнее */
+.contact-head{ 
+  display:flex; align-items:center; gap:10px; 
+  margin: 0 0 12px !important;
+}
+.contact-ico{
+  width:34px; height:34px;
+  border-radius: 999px;
+  background: var(--ve-ico-bg) !important;
+  color:#BFA158;
+}
+
+/* Контент карточки: ровный ритм */
+.contact-main{ margin: 0 0 14px !important; }
+.contact-value{ font-size:16px; line-height:1.45; text-decoration:none; }
+.contact-value:hover{ text-decoration: underline; }
+
+/* Кнопки — без «внутреннего свечения», только деликатный фон на hover */
+.btn-contact{
+  margin-top: auto;
+  border-radius: var(--ve-radius-btn) !important;
+  border-width: 2px;
+  box-shadow: none !important;                 /* убрать inset‑свечение */
+  background: transparent;
+  transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
+}
+.btn-contact:hover{
+  box-shadow: none !important;
+  transform: translateY(-0.5px);
+}
+
+/* Цветовые модификаторы: только лёгкий фон на hover */
+.btn-wa:hover{ background: rgba(37,211,102,.10) !important; }
+.btn-tg:hover{ background: rgba(0,136,204,.10) !important; }
+.btn-ig:hover{ background: rgba(228,64,95,.10) !important; }
+.btn-mail:hover{ background: rgba(191,161,88,.10) !important; }
+
+/* Заголовок секции — единые отступы и плотная линия */
+.contacts-section .section-title{
+  margin: 0 0 20px !important;
+  line-height: 1.15;
+}
+
+/* Мобильные правки: плотнее вертикальный ритм */
+@media (max-width:575.98px){
+  .contact-card{ padding: 18px 16px; }
+  .contact-head{ margin-bottom: 10px !important; }
+  .contact-main{ margin-bottom: 12px !important; }
+}
+/* ===== end polish ===== */
+```
+
+> Эти правила перекроют прежние стили без удаления исходного кода. Внутренние инсет‑тени у `.btn-contact` должны исчезнуть; вместо «неонового» эффекта остаётся деликатный фон при наведении.
+
+## 3) HTML — без изменений структуры
+Верстку карточек, которую мы внедряли ранее (WA → TG → IG → Email), **не менять**. Нужный визуальный эффект даёт только CSS выше.
+
+## 4) Acceptance criteria
+1. Радиусы карточек на контактах визуально ~16px, кнопки — ~12px; без «пухлых» углов.
+2. У кнопок **нет** внутреннего свечения/inset‑тени на hover; остаётся лишь лёгкий полупрозрачный фон в цвете канала.
+3. Иконки на золотистом круге с более мягким фоном (`rgba(191,161,88,.10)`), не «кричат».
+4. Заголовок «Способы связи» имеет ровный нижний отступ ~20px; между заголовком карточки, значением и кнопкой расстояния стабильны (12–14px).
+5. На мобиле вертикальный ритм плотный, ничего не пляшет; кнопка всегда прижата к низу карточки.
+6. Сайт в остальном не изменился; никаких регрессий в других секциях.
+
+## 5) Идемпотентность
+- Новые правила добавлены в конец CSS и используют `!important` **только** там, где надо перебить старые эффекты.
+- Повторное выполнение промпта не дублирует блоки; свойства просто переопределяются.
